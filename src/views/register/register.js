@@ -2,15 +2,33 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
-export const LoginView = ({ navigation }) => {
+export const RegisterView = () => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>
-                Cookbook App Login
+                Register
             </Text>
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="First Name"
+                    value={firstName}
+                    onChangeText={(firstName) => setFirstName(firstName)}
+                />
+            </View>
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChangeText={(lastName) => setLastName(lastName)}
+                />
+            </View>
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.textInput}
@@ -27,21 +45,14 @@ export const LoginView = ({ navigation }) => {
                     onChangeText={(password) => setPassword(password)}
                 />
             </View>
-            <View style={styles.buttonView}>
-                <TouchableOpacity style={styles.button}
+            <TouchableOpacity style={styles.button}
                     onPress={() => navigation.reset({
                         index: 0,
                         routes: [{ name: 'Library' }]
                     })}
                 >
-                    <Text style={styles.buttonText}>LOGIN</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}
-                    onPress={() => navigation.navigate('Register')}
-                >
                     <Text style={styles.buttonText}>REGISTER</Text>
-                </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }

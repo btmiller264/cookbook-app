@@ -28,12 +28,6 @@ export default cstyles = StyleSheet.create({
         fontFamily: 'Poppins-Regular',
         fontSize: 14,
     },
-    buttonView: {
-        flexDirection: 'row',
-        width: '80%',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-    },
     button: {
         width: 100,
         borderRadius: 10,
