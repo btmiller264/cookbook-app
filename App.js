@@ -19,7 +19,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoginView } from './src';
+import { LoginView, RegisterView } from './src';
 
 const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -57,6 +57,11 @@ const App = () => {
           name="Login"
           component={LoginView}
           options={{ title: "Login" }}
+        />
+        <Stack.Screen 
+          name="Register"
+          component={RegisterView}
+          options={{ title: "Register" }}
         />
         <Stack.Screen 
           name="Library"
