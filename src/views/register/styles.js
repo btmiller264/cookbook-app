@@ -14,32 +14,4 @@ export default cstyles = StyleSheet.create({
         marginBottom: 50,
         color: 'black',
     },
-    inputView: {
-        width: "80%",
-        borderRadius: 10,
-        borderColor: 'black',
-        borderWidth: 2,
-        height: 50,
-        marginBottom:25,
-        justifyContent:"center",
-    },
-    textInput: {
-        height: 50,
-        fontFamily: 'Poppins-Regular',
-        fontSize: 14,
-    },
-    button: {
-        width: 100,
-        borderRadius: 10,
-        height: 40,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#7DA2A9",
-        elevation: 3,
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 18,
-        fontFamily: 'Poppins-SemiBold'
-    }
 });

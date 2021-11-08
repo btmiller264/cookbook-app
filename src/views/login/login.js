@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { ActionButton, Input } from '../../components';
 import styles from './styles';
 
 export const LoginView = ({ navigation }) => {
@@ -11,36 +12,30 @@ export const LoginView = ({ navigation }) => {
             <Text style={styles.title}>
                 Cookbook App Login
             </Text>
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={(email) => setEmail(email)}
-                />
-            </View>
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Password"
-                    value={password}
-                    onChangeText={(password) => setPassword(password)}
-                />
-            </View>
+            <Input
+                placeholder="Email"
+                value={email}
+                onChangeText={(email) => setEmail(email)}
+                inputStyles={{ width: '80%', marginBottom: 25, marginTop: 0 }}
+            />
+            <Input
+                placeholder="Password"
+                value={password}
+                onChangeText={(password) => setPassword(password)}
+                inputStyles={{ width: '80%', marginBottom: 25, marginTop: 0 }}
+            />
             <View style={styles.buttonView}>
-                <TouchableOpacity style={styles.button}
+                <ActionButton 
+                    label="LOGIN"
                     onPress={() => navigation.reset({
                         index: 0,
                         routes: [{ name: 'Library' }]
                     })}
-                >
-                    <Text style={styles.buttonText}>LOGIN</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}
+                />
+                <ActionButton 
+                    label="REGISTER"
                     onPress={() => navigation.navigate('Register')}
-                >
-                    <Text style={styles.buttonText}>REGISTER</Text>
-                </TouchableOpacity>
+                />
             </View>
         </View>
     )
