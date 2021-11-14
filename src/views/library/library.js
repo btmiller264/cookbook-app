@@ -3,7 +3,7 @@ import { ScrollView, View, Text, Image, TouchableOpacity } from 'react-native';
 import { SearchBar, Cookbook, Footer } from '../../components';
 import { AddCookbookModal } from './components';
 import styles from './styles';
-import mockData from './mock-data';
+import mockData from '../mock-data';
 
 export const LibraryView = ({ navigation }) => {
     const [search, setSearch] = useState('');
