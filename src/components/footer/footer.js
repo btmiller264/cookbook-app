@@ -16,6 +16,7 @@ export const Footer = ({ navigation }) => {
                 </Pressable>
                 <Pressable
                     style={styles.iconContainer}
+                    onPress={() => navigation.navigate('All Recipes')}
                 >
                     <Image style={styles.icon} source={require('../../../assets/images/Recipes.png')} />
                     <Text style={styles.label}>RECIPES</Text>
