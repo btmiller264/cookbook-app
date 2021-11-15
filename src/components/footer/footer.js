@@ -24,13 +24,9 @@ export const Footer = ({ navigation }) => {
                 <Pressable
                     style={styles.iconContainer}
                 >
-                    <Image style={styles.icon} source={require('../../../assets/images/Share.png')} />
-                    <Text style={styles.label}>SHARE</Text>
-                </Pressable>
-                <Pressable
-                    style={styles.iconContainer}
-                >
-                    <Image style={styles.icon} source={require('../../../assets/images/Settings.png')} />
+                    <View style={styles.settingsContainer}>
+                        <Image style={{ height: 35, width: 35 }} source={require('../../../assets/images/Settings.png')} />
+                    </View>
                     <Text style={styles.label}>SETTINGS</Text>
                 </Pressable>
             </View>

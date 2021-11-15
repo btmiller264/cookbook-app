@@ -10,7 +10,13 @@ export default styles = StyleSheet.create({
     iconContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-    },  
+    },
+    settingsContainer: {
+        height: 40,
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     icon: {
         height: 40,
         width: 40,
