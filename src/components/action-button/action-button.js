@@ -1,13 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import styles from './styles';
 
-export const ActionButton = ({ label, onPress }) => {
+export const ActionButton = ({ label, onPress, customStyles, textStyles }) => {
     return (
-        <TouchableOpacity style={styles.button}
+        <Pressable style={{...styles.button, ...customStyles}}
             onPress={onPress}
         >
-            <Text style={styles.buttonText}>{label}</Text>
-        </TouchableOpacity>
+            <Text style={{...styles.buttonText, ...textStyles}}>{label}</Text>
+        </Pressable>
     )
 }
