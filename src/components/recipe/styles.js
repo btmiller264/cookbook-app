@@ -21,6 +21,7 @@ export default styles = StyleSheet.create({
         fontFamily: 'Poppins-SemiBold',
         fontSize: 18,
         marginLeft: 20,
+        paddingTop: 5,
     },
     imageContainer: {
         height: 60,

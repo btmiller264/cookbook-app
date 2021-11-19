@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import styles from './styles';
+import mockData from '../../views/mock-data';
 
 export const Footer = ({ navigation }) => {
-    console.log(navigation);
     return (
         <View>
             <View style={styles.container}>
@@ -16,7 +16,13 @@ export const Footer = ({ navigation }) => {
                 </Pressable>
                 <Pressable
                     style={styles.iconContainer}
-                    onPress={() => navigation.navigate('All Recipes')}
+                    onPress={() => navigation.navigate('Recipes', {
+                        allRecipes: [].concat.apply([], mockData.map((book) => {
+                            return book.recipes;
+                        })),
+                        name: "All Recipes",
+                        showAdd: false,
+                    })}
                 >
                     <Image style={styles.icon} source={require('../../../assets/images/Recipes.png')} />
                     <Text style={styles.label}>RECIPES</Text>
