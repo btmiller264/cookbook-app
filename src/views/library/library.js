@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, Image, Pressable } from 'react-native';
-import { SearchBar, Cookbook, Footer, AreYouSureModal } from '../../components';
-import { AddCookbookModal, CookbookOptionsModal, EditCookbookModal } from './components';
+import { SearchBar, Cookbook, Footer, AreYouSureModal, OptionsModal } from '../../components';
+import { AddCookbookModal, EditCookbookModal } from './components';
 import styles from './styles';
 import mockData from '../mock-data';
 
@@ -72,6 +72,12 @@ export const LibraryView = ({ navigation }) => {
                                     setCurrentItem(book);
                                     setCookbookOptionsOpen(true);
                                 }}
+                                onPress={() => 
+                                    navigation.navigate('Recipes', {
+                                    allRecipes: book.recipes,
+                                    name: book.name,
+                                    showAdd: true,
+                                })}
                             />
                         )
                     })}
@@ -86,8 +92,9 @@ export const LibraryView = ({ navigation }) => {
                         setModalOpen={setAddCookbookOpen}
                         addCookbook={addCookbook}
                     />
-                    <CookbookOptionsModal
+                    <OptionsModal
                         isOpen={cookbookOptionsOpen}
+                        label='Cookbook'
                         setModalOpen={setCookbookOptionsOpen}
                         editPress={() => setEditCookbookOpen(true)}
                         deletePress={() => openAreYouSure()}
