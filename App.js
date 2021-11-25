@@ -9,7 +9,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoginView, RegisterView, LibraryView, RecipesView } from './src';
+import { LoginView, RegisterView, LibraryView, RecipesView, RecipeView} from './src';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -21,6 +21,7 @@ const App = () => {
         <Stack.Screen name="Register" component={RegisterView} />
         <Stack.Screen name="Library" component={LibraryView} />
         <Stack.Screen name="Recipes" component={RecipesView} />
+        <Stack.Screen name="Recipe" component={RecipeView} />
       </Stack.Navigator>
     </NavigationContainer>
   )

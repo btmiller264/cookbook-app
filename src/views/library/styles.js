@@ -2,11 +2,12 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
     container: {
-        display: 'flex',
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
         backgroundColor: '#F7F7F7',
+    },
+    internalContainer: {
+        alignItems: 'center',
+        justifyContent:'flex-start',
     },
     title: {
         marginTop: 20,
@@ -20,6 +21,7 @@ export default styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         width: '90%',
+        marginBottom: 20,
     },
     addButton: {
         display: 'flex',

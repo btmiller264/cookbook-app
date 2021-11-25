@@ -54,7 +54,7 @@ export const LibraryView = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <ScrollView contentContainerStyle={styles.container}>
+            <ScrollView contentContainerStyle={styles.internalContainer} style={styles.container}>
                 <SearchBar 
                     value={search}
                     onChangeText={(searchTerm) => setSearch(searchTerm)}
