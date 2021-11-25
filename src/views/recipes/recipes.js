@@ -44,7 +44,12 @@ export const RecipesView = ({ navigation, route }) => {
                 {recipes.map((entry) => {
                     return <Recipe 
                             name={entry.name} 
-                            onPressRecipe={() => setCurrentItem(entry)} 
+                            onPressRecipe={() => {
+                                setCurrentItem(entry);
+                                navigation.navigate('Recipe', {
+                                    recipe: entry,
+                                })
+                            }} 
                             onPressOptions={() => setIsOpen(true)} />
                 })}
                 {showAdd &&
