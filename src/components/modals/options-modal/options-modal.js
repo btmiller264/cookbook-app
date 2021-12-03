@@ -1,9 +1,31 @@
 import React from 'react';
 import { Modal, View, Pressable, Text, Image } from 'react-native';
+import Share from 'react-native-share';
 import { IconButton } from '../..';
 import styles from './styles';
 
+
+
 export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePress, showEdit }) => {
+    
+    const url = "https://awesome.contents.com/";
+    const title = "Awesome Contents";
+    const message = `Check out this ${label}!`;
+    
+    const options = {
+      title,
+      url,
+      message,
+    };
+
+    const share = async (customOptions = options) => {
+        try {
+            await Share.open(customOptions);
+          } catch (err) {
+            console.log(err);
+          }
+    }
+    
     return (
         <Modal
             visible={isOpen}
@@ -39,6 +61,9 @@ export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePre
                         name={`Share ${label}`}
                         imageStyles={{ height: 30, width: 25 }}
                         iconSource={require('../../../../assets/images/Share-White.png')} 
+                        onPress={async () => {
+                            await share();
+                          }}
                     />
                 </View>
             </View>
