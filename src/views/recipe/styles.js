@@ -15,6 +15,11 @@ export default styles = StyleSheet.create({
         color: 'black',
         marginTop: 50,
     },
+    images: {
+        maxWidth: 300,
+        maxHeight: 200,
+        marginTop: 10,
+    },
     sectionView: {
         width: '85%',
         borderTopColor: 'black',
