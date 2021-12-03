@@ -43,7 +43,8 @@ export const RecipesView = ({ navigation, route }) => {
                 <Text style={styles.title}>{name}</Text>
                 {recipes.map((entry) => {
                     return <Recipe 
-                            name={entry.name} 
+                            name={entry.name}
+                            key={entry.name}
                             onPressRecipe={() => {
                                 setCurrentItem(entry);
                                 navigation.navigate('Recipe', {
@@ -66,6 +67,7 @@ export const RecipesView = ({ navigation, route }) => {
                     setModalOpen={setIsOpen} 
                     label='Recipe' 
                     deletePress={() => openAreYouSure()}
+                    showEdit={false}
                 />
                 <AreYouSureModal 
                     isOpen={areYouSure}

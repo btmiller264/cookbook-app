@@ -98,6 +98,7 @@ export const LibraryView = ({ navigation }) => {
                         setModalOpen={setCookbookOptionsOpen}
                         editPress={() => setEditCookbookOpen(true)}
                         deletePress={() => openAreYouSure()}
+                        showEdit={true}
                     />
                     <EditCookbookModal 
                         isOpen={editCookbookOpen}

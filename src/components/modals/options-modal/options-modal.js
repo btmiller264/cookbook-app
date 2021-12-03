@@ -3,7 +3,7 @@ import { Modal, View, Pressable, Text, Image } from 'react-native';
 import { IconButton } from '../..';
 import styles from './styles';
 
-export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePress }) => {
+export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePress, showEdit }) => {
     return (
         <Modal
             visible={isOpen}
@@ -27,11 +27,14 @@ export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePre
                         iconSource={require('../../../../assets/images/Close-White.png')} 
                         onPress={deletePress}
                     />
-                    <IconButton 
-                        name={`Edit ${label}`} 
-                        iconSource={require('../../../../assets/images/pencil.png')}
-                        onPress={editPress} 
-                    />
+                    {showEdit &&
+                        <IconButton 
+                            name={`Edit ${label}`} 
+                            iconSource={require('../../../../assets/images/pencil.png')}
+                            onPress={editPress} 
+                        />
+                    }
+
                     <IconButton 
                         name={`Share ${label}`}
                         imageStyles={{ height: 30, width: 25 }}
