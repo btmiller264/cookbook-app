@@ -152,6 +152,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('cookbook.keystore')
+            storePassword 'password'
+            keyAlias 'cookbook'
+            keyPassword 'password'
+        }
     }
     buildTypes {
         debug {
