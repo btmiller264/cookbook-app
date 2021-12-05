@@ -1,0 +1,1 @@
+export { TextModal } from './text-modal';

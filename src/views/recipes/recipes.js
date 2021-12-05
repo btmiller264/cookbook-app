@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, Pressable, Image } from 'react-native';
-import { Footer, SearchBar, Recipe, OptionsModal, AreYouSureModal } from '../../components';
+import { Footer, SearchBar, Recipe, OptionsModal, AreYouSureModal, AddButton } from '../../components';
 import styles from './styles';
 
 export const RecipesView = ({ navigation, route }) => {
@@ -54,13 +54,10 @@ export const RecipesView = ({ navigation, route }) => {
                             onPressOptions={() => setIsOpen(true)} />
                 })}
                 {showAdd &&
-                    <Pressable
-                        style={styles.addContainer}
-                        onPress={() => console.log("Add Recipe")}
-                    >
-                        <Image style={styles.addIcon} source={require('../../../assets/images/AddIcon.png')} />
-                        <Text style={styles.addLabel}>Add Recipe</Text>
-                    </Pressable>
+                    <AddButton label='Recipe' onPress={() => navigation.navigate('Add Recipe', {
+                                allRecipes: allRecipes,
+                            })}
+                    />
                 }
                 <OptionsModal 
                     isOpen={isOpen} 

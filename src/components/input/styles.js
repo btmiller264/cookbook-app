@@ -5,11 +5,11 @@ export default styles = StyleSheet.create({
         width: '100%',
         borderRadius: 10,
         borderColor: 'black',
-        borderWidth: 2,
+        borderWidth: 1,
         height: 40,
         marginTop: 10,
         marginBottom:10,
-        justifyContent:"center",
+        justifyContent: "center",
     },
     textInput: {
         padding: 5,

@@ -3,8 +3,8 @@ import { View, Modal, Pressable, Image, Text } from 'react-native';
 import { ActionButton, Input } from '../../../../components';
 import styles from './styles';
 
-export const AddCookbookModal = ({ isOpen, setModalOpen, addCookbook }) => {
-    const [newName, setNewName] = useState('');
+export const AddIngredientModal = ({ isOpen, setModalOpen, addIngredient }) => {
+    const [ingredient, setIngredient] = useState('');
 
     return ( 
     <Modal
@@ -17,25 +17,25 @@ export const AddCookbookModal = ({ isOpen, setModalOpen, addCookbook }) => {
                 <View style={styles.modalTitleView}>
                     <Pressable
                         onPress={() => {
-                            setNewName('');
-                            setModalOpen(!isOpen);
+                            setIngredient('');
+                            setModalOpen(!isOpen)
                         }}
                     >
                         <Image style={styles.exitIcon} source={require('../../../../../assets/images/Close.png')} />
                     </Pressable>
                     <Text style={styles.modalTitle}>
-                        Add Cookbook
+                        Add Ingredient
                     </Text>
                 </View>
                 <Input 
-                    placeholder="Name" 
-                    value={newName} 
-                    onChange={(name) => setNewName(name)} 
+                    placeholder="Ingredient" 
+                    value={ingredient} 
+                    onChange={(name) => setIngredient(name)} 
                 />
                 <View style={styles.buttonView}>
-                    <ActionButton label='CREATE' onPress={() => {
-                        addCookbook({ name: newName })
-                        setNewName('');
+                    <ActionButton label='Done' onPress={() => {
+                        addIngredient(ingredient);
+                        setIngredient('');
                     }} />
                 </View>
             </View>
