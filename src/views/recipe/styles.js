@@ -16,8 +16,8 @@ export default styles = StyleSheet.create({
         marginTop: 50,
     },
     images: {
-        maxWidth: 300,
-        maxHeight: 200,
+        width: 250,
+        height: 250,
         marginTop: 10,
     },
     sectionView: {

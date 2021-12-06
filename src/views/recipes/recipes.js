@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Pressable, Image } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { Footer, SearchBar, Recipe, OptionsModal, AreYouSureModal, AddButton } from '../../components';
 import styles from './styles';
 
@@ -16,6 +16,14 @@ export const RecipesView = ({ navigation, route }) => {
             return item.name.toLowerCase().includes(search.toLowerCase());
         }))
     }, [search])
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+          console.log('Refreshed!');
+          setRecipes(allRecipes);
+        });
+        return unsubscribe;
+    }, [allRecipes]);
 
     const openAreYouSure = () => {
         setIsOpen(false);

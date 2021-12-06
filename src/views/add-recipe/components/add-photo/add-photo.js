@@ -71,8 +71,8 @@ export const AddPhoto = ({ photos, setPhotos }) => {
                         <Pressable style={styles.imageContainer} onPress={() => {
                             setCurrentPhoto(entry);
                             setEditModalOpen(true);
-                        }}>
-                            <Image style={styles.image} source={{ uri: entry }} key={entry} resizeMode='contain' />
+                        }} key={entry}>
+                            <Image style={styles.image} source={{ uri: entry }} resizeMode='contain' />
                         </Pressable>
                     )
                 })}

@@ -11,6 +11,32 @@ export const AddRecipe = ({ route, navigation }) => {
     const [ingredients, setIngredients] = useState([ 'test ingredient', 'test 2' ]);
     const [instructions, setInstructions] = useState([ 'Instruction test number 1', 'Test instruction number 2']);
 
+    const addRecipe = () => {
+        if (name === '') {
+            Alert.alert('Recipe must have a name.')
+        } else if (ingredients.length === 0) {
+            Alert.alert('Recipe must have at least 1 ingredient.');
+        } else if (instructions.length === 0) {
+            Alert.alert('Recipe must have at least one instruction.');
+        } else {
+            allRecipes.push({
+                name: name,
+                data: [
+                    {
+                        title: 'Ingredients',
+                        data: ingredients
+                    },
+                    {
+                        title: 'Instructions',
+                        data: instructions
+                    }
+                ],
+                images: photos,
+            });
+            navigation.goBack();
+        }
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={styles.internalContainer} style={styles.container}>
@@ -47,11 +73,11 @@ export const AddRecipe = ({ route, navigation }) => {
                         label='Cancel' 
                         customStyles={{ backgroundColor: '#F7F7F7', borderColor: 'black', borderWidth: 1 }}
                         textStyles={{ color: '#7DA2A9' }}
-                        onPress={() => console.log('Cancel')}
+                        onPress={() => navigation.goBack()}
                     />
                     <ActionButton 
                         label='Done' 
-                        onPress={() => console.log('Done')}
+                        onPress={() => addRecipe()}
                     />
                 </View>
             </ScrollView>
