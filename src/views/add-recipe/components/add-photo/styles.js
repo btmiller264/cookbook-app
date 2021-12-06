@@ -1,20 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F7F7F7',
-    },
-    internalContainer: {
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
-    title: {
-        fontFamily: 'Poppins-Medium',
-        fontSize: 24,
-        color: 'black',
-        marginTop: 20,
-    },
     sectionView: {
         width: '90%',
         borderTopColor: 'black',
@@ -36,10 +22,19 @@ export default styles = StyleSheet.create({
         fontSize: 18,
         color: 'black',
     },
-    buttonView: {
-        width: '90%',
-        justifyContent: 'space-around',
-        flexDirection: 'row',
-        marginBottom: 20,
-    }
+    imagesContainer: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    imageContainer: {
+        width: 400,
+        height: 300,
+        marginBottom: 10,
+    },
+    image: {
+        width: 400,
+        height: 300,
+        marginBottom: 10,
+    },
 });

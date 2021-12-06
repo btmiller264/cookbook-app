@@ -97,6 +97,7 @@ export const LibraryView = ({ navigation }) => {
                         placeholder='Cookbook'
                         setModalOpen={setAddCookbookOpen}
                         onDone={addCookbook}
+                        showDelete={false}
                     />
                     <OptionsModal
                         isOpen={cookbookOptionsOpen}
@@ -118,6 +119,7 @@ export const LibraryView = ({ navigation }) => {
                         initialValue={currentItem.name}
                         setModalOpen={setEditCookbookOpen}
                         onDone={editCookbook}
+                        showDelete={false}
                     />
                     <AreYouSureModal 
                         isOpen={areYouSure}

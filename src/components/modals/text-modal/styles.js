@@ -44,6 +44,11 @@ export default styles = StyleSheet.create({
     },
     buttonView: {
         width: '100%',
-        alignItems: 'flex-end',
+        alignItems: 'flex-end'
+    },
+    buttonViewDelete: {
+        width: '100%',
+        justifyContent: 'space-around',
+        flexDirection: 'row',
     },
 });
