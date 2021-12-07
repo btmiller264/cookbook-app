@@ -16,7 +16,10 @@ export const AddCookbookModal = ({ isOpen, setModalOpen, addCookbook }) => {
             <View style={styles.modalView}>
                 <View style={styles.modalTitleView}>
                     <Pressable
-                        onPress={() => setModalOpen(!isOpen)}
+                        onPress={() => {
+                            setNewName('');
+                            setModalOpen(!isOpen);
+                        }}
                     >
                         <Image style={styles.exitIcon} source={require('../../../../../assets/images/Close.png')} />
                     </Pressable>

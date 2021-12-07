@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, Image, Pressable } from 'react-native';
-import { SearchBar, Cookbook, Footer, AreYouSureModal, OptionsModal } from '../../components';
+import { SearchBar, Cookbook, Footer, AreYouSureModal, OptionsModal, TextModal } from '../../components';
 import { AddCookbookModal, EditCookbookModal } from './components';
 import styles from './styles';
 import mockData from '../mock-data';
@@ -21,18 +21,22 @@ export const LibraryView = ({ navigation }) => {
     }, [search]);
 
     const addCookbook = (cookbook) => {
-        mockData.push(cookbook);
-        setItems(mockData);
+        if (cookbook != '') {
+            mockData.push({ name: cookbook, recipes: [] });
+            setItems(mockData);
+        }
         setAddCookbookOpen(false);
     }
 
     const editCookbook = (newName) => {
-        mockData.find(entry => {
-            if (entry.name === currentItem.name) {
-                entry.name = newName;
-            }
-        })
-        setItems(mockData);
+        if (newName != '') {
+            mockData.find(entry => {
+                if (entry.name === currentItem.name) {
+                    entry.name = newName;
+                }
+            })
+            setItems(mockData);
+        }
         setEditCookbookOpen(false);
     }
 
@@ -60,7 +64,7 @@ export const LibraryView = ({ navigation }) => {
                     onChangeText={(searchTerm) => setSearch(searchTerm)}
                 />
                 <Text style={styles.title}>
-                    MY COOKBOOKS
+                    My Cookbooks
                 </Text>
                 <View style={styles.cookbooksView}>
                     {items.map((book) => {
@@ -87,23 +91,35 @@ export const LibraryView = ({ navigation }) => {
                     >
                         <Image style={styles.addIcon} source={require('../../../assets/images/AddIcon.png')} />
                     </Pressable>
-                    <AddCookbookModal 
+                    <TextModal 
                         isOpen={addCookbookOpen}
+                        label='Add Cookbook'
+                        placeholder='Cookbook'
                         setModalOpen={setAddCookbookOpen}
-                        addCookbook={addCookbook}
+                        onDone={addCookbook}
+                        showDelete={false}
                     />
                     <OptionsModal
                         isOpen={cookbookOptionsOpen}
                         label='Cookbook'
                         setModalOpen={setCookbookOptionsOpen}
-                        editPress={() => setEditCookbookOpen(true)}
-                        deletePress={() => openAreYouSure()}
+                        editPress={() => {
+                            setCookbookOptionsOpen(false);
+                            setEditCookbookOpen(true);
+                        }}
+                        deletePress={() => {
+                            setCookbookOptionsOpen(false);
+                            openAreYouSure();
+                        }}
                         showEdit={true}
                     />
-                    <EditCookbookModal 
+                    <TextModal 
                         isOpen={editCookbookOpen}
+                        label='Edit Cookbook'
+                        initialValue={currentItem.name}
                         setModalOpen={setEditCookbookOpen}
-                        editCookbook={editCookbook}
+                        onDone={editCookbook}
+                        showDelete={false}
                     />
                     <AreYouSureModal 
                         isOpen={areYouSure}

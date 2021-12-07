@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Pressable, Image } from 'react-native';
-import { Footer, SearchBar, Recipe, OptionsModal, AreYouSureModal } from '../../components';
+import { View, Text, ScrollView, Alert } from 'react-native';
+import { Footer, SearchBar, Recipe, OptionsModal, AreYouSureModal, AddButton } from '../../components';
+import { useIsFocused } from '@react-navigation/native';
 import styles from './styles';
 
 export const RecipesView = ({ navigation, route }) => {
@@ -16,6 +17,8 @@ export const RecipesView = ({ navigation, route }) => {
             return item.name.toLowerCase().includes(search.toLowerCase());
         }))
     }, [search])
+
+    const isFocused = useIsFocused();
 
     const openAreYouSure = () => {
         setIsOpen(false);
@@ -33,9 +36,35 @@ export const RecipesView = ({ navigation, route }) => {
         setIsOpen(true);
     }
 
+    const addRecipe = (name, ingredients, instructions, photos) => {
+        if (name === '') {
+            Alert.alert('Recipe must have a name.')
+        } else if (ingredients.length === 0) {
+            Alert.alert('Recipe must have at least 1 ingredient.');
+        } else if (instructions.length === 0) {
+            Alert.alert('Recipe must have at least one instruction.');
+        } else {
+            allRecipes.push({
+                name: name,
+                data: [
+                    {
+                        title: 'Ingredients',
+                        data: ingredients
+                    },
+                    {
+                        title: 'Instructions',
+                        data: instructions
+                    }
+                ],
+                images: photos,
+            });
+        }
+        setRecipes(allRecipes);
+    }
+
     return (
         <View style={{ flex: 1}}>
-            <ScrollView contentContainerStyle={styles.container}>
+            <ScrollView contentContainerStyle={styles.internalContainer} style={styles.container}>
                 <SearchBar 
                     value={search}
                     onChangeText={(searchTerm) => setSearch(searchTerm)}
@@ -53,14 +82,13 @@ export const RecipesView = ({ navigation, route }) => {
                             }} 
                             onPressOptions={() => setIsOpen(true)} />
                 })}
-                {showAdd &&
-                    <Pressable
-                        style={styles.addContainer}
-                        onPress={() => console.log("Add Recipe")}
-                    >
-                        <Image style={styles.addIcon} source={require('../../../assets/images/AddIcon.png')} />
-                        <Text style={styles.addLabel}>Add Recipe</Text>
-                    </Pressable>
+                {showAdd ? 
+                    <AddButton label='Recipe' onPress={() => navigation.navigate('Add Recipe', {
+                                allRecipes: allRecipes,
+                                addRecipe: addRecipe,
+                            })}
+                        customStyles={{ marginBottom: 15 }}
+                    /> : <View style={{ marginBottom: 15 }}/>
                 }
                 <OptionsModal 
                     isOpen={isOpen} 

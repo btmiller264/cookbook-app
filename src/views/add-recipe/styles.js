@@ -13,19 +13,14 @@ export default styles = StyleSheet.create({
         fontFamily: 'Poppins-Medium',
         fontSize: 24,
         color: 'black',
-        marginTop: 50,
-    },
-    images: {
-        width: 250,
-        height: 250,
-        marginTop: 10,
+        marginTop: 20,
     },
     sectionView: {
-        width: '85%',
+        width: '90%',
         borderTopColor: 'black',
         borderTopWidth: 1,
-        paddingTop: 20,
-        marginTop: 20,
+        paddingTop: 5,
+        marginTop: 10,
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'flex-start',
@@ -34,29 +29,17 @@ export default styles = StyleSheet.create({
         fontFamily: 'Poppins-Regular',
         fontSize: 18,
         color: 'black',
+        marginBottom: 5,
     },
-    listContainer: {
+    sectionTitleEmpty: {
+        fontFamily: 'Poppins-Regular',
+        fontSize: 18,
+        color: 'black',
+    },
+    buttonView: {
         width: '90%',
-    }, 
-    ingredient: {
-        fontFamily: 'Poppins-Regular',
-        fontSize: 14,
-        color: 'black', 
-        marginLeft: 10,
-    },
-    instructionContainer: {
+        justifyContent: 'space-around',
         flexDirection: 'row',
-    },
-    number: {
-        fontFamily: 'Poppins-Regular',
-        fontSize: 14,
-        color: 'black', 
-        marginLeft: 10,
-    },
-    instruction: {
-        fontFamily: 'Poppins-Regular',
-        fontSize: 14,
-        color: 'black', 
-        marginLeft: 5,
-    },
+        marginBottom: 20,
+    }
 });

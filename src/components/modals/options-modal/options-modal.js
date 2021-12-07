@@ -4,8 +4,6 @@ import Share from 'react-native-share';
 import { IconButton } from '../..';
 import styles from './styles';
 
-
-
 export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePress, showEdit }) => {
     
     const url = "https://awesome.contents.com/";

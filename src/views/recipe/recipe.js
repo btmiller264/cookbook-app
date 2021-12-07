@@ -14,7 +14,7 @@ export const RecipeView = ({ route, navigation }) => {
                 <Text style={styles.title}>{recipe.name}</Text>
                 <View>
                     {recipe.images.map((image) => {
-                            return <Image style={styles.images} source={image} key={image} />
+                        return <Image style={styles.images} source={typeof image === 'string' ? { uri: image } : image} key={image} />
                     })}
                 </View>
                 {recipe.data.map((section) => {
