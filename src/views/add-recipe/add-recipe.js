@@ -8,8 +8,8 @@ export const AddRecipe = ({ route, navigation }) => {
     const { addRecipe } = route.params;
     const [name, setName] = useState('');
     const [photos, setPhotos] = useState([]);
-    const [ingredients, setIngredients] = useState([ 'test ingredient', 'test 2' ]);
-    const [instructions, setInstructions] = useState([ 'Instruction test number 1', 'Test instruction number 2']);
+    const [ingredients, setIngredients] = useState([]);
+    const [instructions, setInstructions] = useState([]);
 
     return (
         <View style={{ flex: 1 }}>

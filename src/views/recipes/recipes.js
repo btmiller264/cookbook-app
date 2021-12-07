@@ -64,7 +64,7 @@ export const RecipesView = ({ navigation, route }) => {
 
     return (
         <View style={{ flex: 1}}>
-            <ScrollView contentContainerStyle={styles.container}>
+            <ScrollView contentContainerStyle={styles.internalContainer} style={styles.container}>
                 <SearchBar 
                     value={search}
                     onChangeText={(searchTerm) => setSearch(searchTerm)}
@@ -82,12 +82,13 @@ export const RecipesView = ({ navigation, route }) => {
                             }} 
                             onPressOptions={() => setIsOpen(true)} />
                 })}
-                {showAdd &&
+                {showAdd ? 
                     <AddButton label='Recipe' onPress={() => navigation.navigate('Add Recipe', {
                                 allRecipes: allRecipes,
                                 addRecipe: addRecipe,
                             })}
-                    />
+                        customStyles={{ marginBottom: 15 }}
+                    /> : <View style={{ marginBottom: 15 }}/>
                 }
                 <OptionsModal 
                     isOpen={isOpen} 

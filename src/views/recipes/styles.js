@@ -2,11 +2,13 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
     container: {
-        display: 'flex',
         flex: 1,
+        backgroundColor: '#F7F7F7',
+    },
+    internalContainer: {
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#F7F7F7',
+        marginBottom: 20,
     },
     title: {
         fontFamily: 'Poppins-Medium',
