@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Alert } from 'react-native';
 import { Footer, SearchBar, Recipe, OptionsModal, AreYouSureModal, AddButton } from '../../components';
+import { useIsFocused } from '@react-navigation/native';
 import styles from './styles';
 
 export const RecipesView = ({ navigation, route }) => {
@@ -17,13 +18,7 @@ export const RecipesView = ({ navigation, route }) => {
         }))
     }, [search])
 
-    useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-          console.log('Refreshed!');
-          setRecipes(allRecipes);
-        });
-        return unsubscribe;
-    }, [allRecipes]);
+    const isFocused = useIsFocused();
 
     const openAreYouSure = () => {
         setIsOpen(false);
@@ -39,6 +34,32 @@ export const RecipesView = ({ navigation, route }) => {
     const cancelDelete = () => {
         setAreYouSure(false);
         setIsOpen(true);
+    }
+
+    const addRecipe = (name, ingredients, instructions, photos) => {
+        if (name === '') {
+            Alert.alert('Recipe must have a name.')
+        } else if (ingredients.length === 0) {
+            Alert.alert('Recipe must have at least 1 ingredient.');
+        } else if (instructions.length === 0) {
+            Alert.alert('Recipe must have at least one instruction.');
+        } else {
+            allRecipes.push({
+                name: name,
+                data: [
+                    {
+                        title: 'Ingredients',
+                        data: ingredients
+                    },
+                    {
+                        title: 'Instructions',
+                        data: instructions
+                    }
+                ],
+                images: photos,
+            });
+        }
+        setRecipes(allRecipes);
     }
 
     return (
@@ -64,6 +85,7 @@ export const RecipesView = ({ navigation, route }) => {
                 {showAdd &&
                     <AddButton label='Recipe' onPress={() => navigation.navigate('Add Recipe', {
                                 allRecipes: allRecipes,
+                                addRecipe: addRecipe,
                             })}
                     />
                 }

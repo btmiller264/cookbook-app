@@ -5,37 +5,11 @@ import { AddData, AddPhoto } from './components';
 import styles from './styles';
 
 export const AddRecipe = ({ route, navigation }) => {
-    const { allRecipes } = route.params;
+    const { addRecipe } = route.params;
     const [name, setName] = useState('');
     const [photos, setPhotos] = useState([]);
     const [ingredients, setIngredients] = useState([ 'test ingredient', 'test 2' ]);
     const [instructions, setInstructions] = useState([ 'Instruction test number 1', 'Test instruction number 2']);
-
-    const addRecipe = () => {
-        if (name === '') {
-            Alert.alert('Recipe must have a name.')
-        } else if (ingredients.length === 0) {
-            Alert.alert('Recipe must have at least 1 ingredient.');
-        } else if (instructions.length === 0) {
-            Alert.alert('Recipe must have at least one instruction.');
-        } else {
-            allRecipes.push({
-                name: name,
-                data: [
-                    {
-                        title: 'Ingredients',
-                        data: ingredients
-                    },
-                    {
-                        title: 'Instructions',
-                        data: instructions
-                    }
-                ],
-                images: photos,
-            });
-            navigation.goBack();
-        }
-    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -77,7 +51,10 @@ export const AddRecipe = ({ route, navigation }) => {
                     />
                     <ActionButton 
                         label='Done' 
-                        onPress={() => addRecipe()}
+                        onPress={() => {
+                            addRecipe(name, ingredients, instructions, photos);
+                            navigation.goBack();
+                        }}
                     />
                 </View>
             </ScrollView>
