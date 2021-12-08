@@ -14,6 +14,8 @@ export default styles = StyleSheet.create({
         padding: 20,
         alignItems: 'center',
         justifyContent: 'flex-start',
+        borderColor: 'black',
+        borderWidth: 1,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,

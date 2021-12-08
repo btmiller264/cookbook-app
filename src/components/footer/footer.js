@@ -29,6 +29,7 @@ export const Footer = ({ navigation }) => {
                 </Pressable>
                 <Pressable
                     style={styles.iconContainer}
+                    onPress={() => navigation.navigate('Settings')}
                 >
                     <View style={styles.settingsContainer}>
                         <Image style={{ height: 35, width: 35 }} source={require('../../../assets/images/Settings.png')} />

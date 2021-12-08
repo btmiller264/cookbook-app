@@ -23,7 +23,7 @@ export const AreYouSureModal = ({ label, isOpen, setModalOpen, onDelete, onCance
                         />
                         <ActionButton 
                             label='Cancel' 
-                            customStyles={{ backgroundColor: '#F7F7F7', borderWidth: 2, borderColor: 'black' }}
+                            customStyles={{ backgroundColor: '#F7F7F7', borderWidth: 1, borderColor: 'black' }}
                             textStyles={{ color: '#7DA2A9' }} 
                             onPress={onCancel}
                         />
