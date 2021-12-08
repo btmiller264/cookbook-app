@@ -8,7 +8,7 @@ export default cstyles = StyleSheet.create({
         marginTop: 25,
         height: 40,
         borderColor: 'black',
-        borderWidth: 2,
+        borderWidth: 1,
         borderRadius: 10,
         backgroundColor: '#F7F7F7',
     },

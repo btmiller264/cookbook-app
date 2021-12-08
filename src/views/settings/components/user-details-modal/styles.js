@@ -8,14 +8,14 @@ export default styles = StyleSheet.create({
         width: '100%',
     },
     modalView: {
-        width: '90%',
+        width: '100%',
         backgroundColor: '#F7F7F7',
         borderRadius: 20,
         padding: 20,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         borderColor: 'black',
-        borderWidth: 1,
+        borderWidth: 2,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -42,8 +42,29 @@ export default styles = StyleSheet.create({
         color: 'black',
         lineHeight: 27,
     },
-    icon: {
-        width: 20,
-        height: 20,
-    }
+    infoContainer: {
+        width: '100%',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        marginTop: 20,
+    },
+    label: {
+        fontFamily: 'Poppins-Medium',
+        fontSize: 18,
+        color: 'black'
+    },
+    displayContainer: {
+        borderRadius: 10,
+        backgroundColor: '#7DA2A9',
+        width: '100%',
+        height: 40,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+    },
+    infoText: {
+        paddingLeft: 10,
+        fontFamily: 'Poppins-Medium',
+        fontSize: 18,
+        color: '#F7F7F7'
+    },
 });

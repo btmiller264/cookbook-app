@@ -9,7 +9,7 @@ export default cstyles = StyleSheet.create({
         backgroundColor: '#F7F7F7',
     },
     title: {
-        fontFamily: 'Poppins-Regular',
+        fontFamily: 'Poppins-Medium',
         fontSize: 24,
         marginBottom: 50,
         color: 'black',

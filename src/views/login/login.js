@@ -10,7 +10,7 @@ export const LoginView = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>
-                Cookbook App Login
+                Cookbooks Login
             </Text>
             <Input
                 placeholder="Email"
