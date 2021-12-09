@@ -8,7 +8,7 @@ export default styles = StyleSheet.create({
         width: '100%',
     },
     modalView: {
-        width: '100%',
+        width: '90%',
         backgroundColor: '#F7F7F7',
         borderRadius: 20,
         padding: 20,
