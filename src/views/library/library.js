@@ -111,7 +111,6 @@ export const LibraryView = ({ navigation }) => {
                             setCookbookOptionsOpen(false);
                             openAreYouSure();
                         }}
-                        showEdit={true}
                     />
                     <TextModal 
                         isOpen={editCookbookOpen}

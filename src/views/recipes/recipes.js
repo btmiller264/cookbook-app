@@ -62,6 +62,32 @@ export const RecipesView = ({ navigation, route }) => {
         setRecipes(allRecipes);
     }
 
+    const editRecipe = (name, ingredients, instructions, photos) => {
+        if (name === '') {
+            Alert.alert('Recipe must have a name.')
+        } else if (ingredients.length === 0) {
+            Alert.alert('Recipe must have at least 1 ingredient.');
+        } else if (instructions.length === 0) {
+            Alert.alert('Recipe must have at least one instruction.');
+        } else {
+            allRecipes[allRecipes.indexOf(currentItem)] = {
+                name: name,
+                data: [
+                    {
+                        title: 'Ingredients',
+                        data: ingredients
+                    },
+                    {
+                        title: 'Instructions',
+                        data: instructions
+                    }
+                ],
+                images: photos,
+            };
+            setRecipes(allRecipes);
+        }
+    }
+
     return (
         <View style={{ flex: 1}}>
             <ScrollView contentContainerStyle={styles.internalContainer} style={styles.container}>
@@ -80,12 +106,17 @@ export const RecipesView = ({ navigation, route }) => {
                                     recipe: entry,
                                 })
                             }} 
-                            onPressOptions={() => setIsOpen(true)} />
+                            onPressOptions={() => {
+                                console.log(entry);
+                                setCurrentItem(entry);
+                                setIsOpen(true);
+                            }} />
                 })}
                 {showAdd ? 
                     <AddButton label='Recipe' onPress={() => navigation.navigate('Add Recipe', {
                                 allRecipes: allRecipes,
                                 addRecipe: addRecipe,
+                                editMode: false,
                             })}
                         customStyles={{ marginBottom: 15 }}
                     /> : <View style={{ marginBottom: 15 }}/>
@@ -95,7 +126,13 @@ export const RecipesView = ({ navigation, route }) => {
                     setModalOpen={setIsOpen} 
                     label='Recipe' 
                     deletePress={() => openAreYouSure()}
-                    showEdit={false}
+                    editPress={() => {
+                        setIsOpen(false);
+                        navigation.navigate('Add Recipe', {
+                        editMode: true,
+                        editRecipe: editRecipe,
+                        currentRecipe: currentItem,
+                    })}}
                 />
                 <AreYouSureModal 
                     isOpen={areYouSure}
