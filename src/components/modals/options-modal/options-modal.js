@@ -4,7 +4,7 @@ import Share from 'react-native-share';
 import { IconButton } from '../..';
 import styles from './styles';
 
-export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePress, showEdit }) => {
+export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePress }) => {
     
     const url = "https://awesome.contents.com/";
     const title = "Awesome Contents";
@@ -47,14 +47,11 @@ export const OptionsModal = ({ isOpen, setModalOpen, label, editPress, deletePre
                         iconSource={require('../../../../assets/images/Close-White.png')} 
                         onPress={deletePress}
                     />
-                    {showEdit &&
-                        <IconButton 
-                            name={`Edit ${label}`} 
-                            iconSource={require('../../../../assets/images/pencil.png')}
-                            onPress={editPress} 
-                        />
-                    }
-
+                    <IconButton 
+                        name={`Edit ${label}`} 
+                        iconSource={require('../../../../assets/images/pencil.png')}
+                        onPress={editPress} 
+                    />
                     <IconButton 
                         name={`Share ${label}`}
                         imageStyles={{ height: 30, width: 25 }}

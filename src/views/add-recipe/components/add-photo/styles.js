@@ -28,13 +28,13 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageContainer: {
-        width: 400,
-        height: 300,
+        width: 300,
+        height: 200,
         marginBottom: 10,
     },
     image: {
-        width: 400,
-        height: 300,
+        width: 300,
+        height: 200,
         marginBottom: 10,
     },
 });

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, Alert } from 'react-native';
-import { Footer, AddButton, ActionButton, Input } from '../../components';
+import { View, ScrollView, Text } from 'react-native';
+import { Footer, ActionButton, Input } from '../../components';
 import { AddData, AddPhoto } from './components';
 import styles from './styles';
 
 export const AddRecipe = ({ route, navigation }) => {
-    const { addRecipe } = route.params;
-    const [name, setName] = useState('');
-    const [photos, setPhotos] = useState([]);
-    const [ingredients, setIngredients] = useState([]);
-    const [instructions, setInstructions] = useState([]);
+    const { addRecipe, currentRecipe, editMode, editRecipe } = route.params;
+    const [name, setName] = useState(currentRecipe ? currentRecipe.name : '');
+    const [photos, setPhotos] = useState(currentRecipe ? currentRecipe.images : []);
+    const [ingredients, setIngredients] = useState(currentRecipe ? currentRecipe.data[0].data : []);
+    const [instructions, setInstructions] = useState(currentRecipe ? currentRecipe.data[1].data : []);
 
     return (
         <View style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={styles.internalContainer} style={styles.container}>
-                <Text style={styles.title}>Add Recipe</Text>
+                <Text style={styles.title}>{editMode ? 'Edit Recipe' : 'Add Recipe'}</Text>
                 <View style={styles.sectionView}>
                     <Text style={name.length === 0 ? styles.sectionTitleEmpty : styles.sectionTitle}>Recipe Name</Text>
                     <Input 
@@ -52,6 +52,7 @@ export const AddRecipe = ({ route, navigation }) => {
                     <ActionButton 
                         label='Done' 
                         onPress={() => {
+                            editMode ? editRecipe(name, ingredients, instructions, photos) :
                             addRecipe(name, ingredients, instructions, photos);
                             navigation.goBack();
                         }}
