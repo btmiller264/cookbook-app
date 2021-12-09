@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView, Text, Alert } from 'react-native';
 import { Footer, ActionButton, Input } from '../../components';
 import { AddData, AddPhoto } from './components';
 import styles from './styles';
@@ -10,6 +10,21 @@ export const AddRecipe = ({ route, navigation }) => {
     const [photos, setPhotos] = useState(currentRecipe ? currentRecipe.images : []);
     const [ingredients, setIngredients] = useState(currentRecipe ? currentRecipe.data[0].data : []);
     const [instructions, setInstructions] = useState(currentRecipe ? currentRecipe.data[1].data : []);
+
+	const checkRecipe = () => {
+		if (name === '') {
+            Alert.alert('Recipe must have a name.');
+			return false;
+        } else if (ingredients.length === 0) {
+            Alert.alert('Recipe must have at least 1 ingredient.');
+			return false;
+        } else if (instructions.length === 0) {
+            Alert.alert('Recipe must have at least one instruction.');
+			return false;
+        } else {
+			return true;
+		}
+	}
 
     return (
         <View style={{ flex: 1 }}>
@@ -52,9 +67,11 @@ export const AddRecipe = ({ route, navigation }) => {
                     <ActionButton 
                         label='Done' 
                         onPress={() => {
-                            editMode ? editRecipe(name, ingredients, instructions, photos) :
-                            addRecipe(name, ingredients, instructions, photos);
-                            navigation.goBack();
+							if (checkRecipe()) {
+								editMode ? editRecipe(name, ingredients, instructions, photos) :
+								addRecipe(name, ingredients, instructions, photos);
+								navigation.goBack();
+							}
                         }}
                     />
                 </View>

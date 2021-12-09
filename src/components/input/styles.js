@@ -13,6 +13,7 @@ export default styles = StyleSheet.create({
     },
     textInput: {
         padding: 5,
+		paddingTop: 10,
         height: 40,
         fontFamily: 'Poppins-Regular',
         fontSize: 14,

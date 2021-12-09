@@ -7,9 +7,17 @@
  */
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoginView, RegisterView, LibraryView, RecipesView, RecipeView, AddRecipe, SettingsView } from './src';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  LoginView,
+  RegisterView,
+  LibraryView,
+  RecipesView,
+  RecipeView,
+  AddRecipe,
+  SettingsView,
+} from './src';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -17,8 +25,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginView} options={{headerShown: false}} />
-        <Stack.Screen name="Register" component={RegisterView} options={{headerShown: false}} />
+        <Stack.Screen
+          name="Login"
+          component={LoginView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Register" component={RegisterView} />
         <Stack.Screen name="Library" component={LibraryView} />
         <Stack.Screen name="Recipes" component={RecipesView} />
         <Stack.Screen name="Recipe" component={RecipeView} />
@@ -26,7 +38,7 @@ const App = () => {
         <Stack.Screen name="Settings" component={SettingsView} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
 export default App;
