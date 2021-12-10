@@ -1,15 +1,15 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
     container: {
-        height: 80,
+        height: Platform.OS === 'ios' ? 80 : 60,
         backgroundColor: '#C4C4C4',
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
     iconContainer: {
-		paddingTop: 10,
-        justifyContent: 'flex-start',
+		paddingTop: Platform.OS === 'ios' ? 10 : 0,
+        justifyContent: Platform.OS === 'ios' ? 'flex-start' : 'center',
         alignItems: 'center',
     },
     settingsContainer: {
